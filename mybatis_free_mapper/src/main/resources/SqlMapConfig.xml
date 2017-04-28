@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--<properties resource="db.properties">
+	</properties>-->
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<setting name="multipleResultSetsEnabled" value="false"/>
+	</settings>
+
+
+	<typeAliases>
+		<package name="com.study.mybatis.free.domain" />
+	</typeAliases>
+
+	<!--<plugins>
+		<plugin interceptor="com.study.mybatis.free.interceptor.MapperInterceptor">
+			<property name="IDENTITY" value="MYSQL"/>
+			<property name="seqFormat" value="{0}.nextval"/>
+			&lt;!&ndash;支持Map类型的实体类，自动将大写下划线的Key转换为驼峰式&ndash;&gt;
+			&lt;!&ndash;这个处理使得通用Mapper可以支持Map类型的实体（实体中的字段必须按常规方式定义，否则无法反射获得列）&ndash;&gt;
+			<property name="cameHumpMap" value="true"/>
+			<property name="mappers" value="com.study.mybatis.free.mapper.Mapper"/>
+		</plugin>
+	</plugins>-->
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://118.244.212.178:5306/mybatis" />
+				<property name="username" value="root" />
+				<property name="password" value="test@wode2017" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="sqlMap/UserMapper.xml"></mapper>
+	</mappers>
+
+</configuration>

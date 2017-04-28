@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!--<properties resource="db.properties">
+	</properties>-->
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<setting name="multipleResultSetsEnabled" value="false"/>
+	</settings>
+
+
+	<typeAliases>
+		<package name="com.study.mybatis.page.domain" />
+	</typeAliases>
+
+	<plugins>
+		<!--<plugin interceptor="PageInterceptor" />-->
+		<!--<plugin interceptor="PagingPlugin">
+			<property name="default.page" value="1" />
+			<property name="defaultPageSize" value="20" />
+			<property name="default.useFlag" value="true" />
+			<property name="default.checkFlag" value="false" />
+			<property name="default.cleanOrderBy" value="false" />
+		</plugin> -->
+		<plugin interceptor="com.study.mybatis.free.page.interceptor.pagehelper.PageHelper" >
+			<property name="dialect" value="mysql"/>
+		</plugin>
+		<plugin interceptor="com.study.mybatis.free.page.interceptor.timer.TimerInterceptor">
+
+		</plugin>
+	</plugins>
+
+	<environments default="final">
+		<environment id="final">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
+				<property name="username" value="root" />
+				<property name="password" value="root" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="sqlMap/UserMapper.xml"></mapper>
+	</mappers>
+
+</configuration>
