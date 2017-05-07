@@ -25,6 +25,7 @@
 package com.study.mybatis.free.interceptor;
 
 
+import com.study.mybatis.free.helper.MapperHelper;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
@@ -45,6 +46,8 @@ import java.util.Properties;
 })
 public class MapperInterceptor implements Interceptor {
 
+    //Singleton Factory
+    public static MapperHelper mappperHelper = new MapperHelper();
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -52,6 +55,12 @@ public class MapperInterceptor implements Interceptor {
         MappedStatement ms = (MappedStatement) objects[0];
         String msId = ms.getId();
         //不需要拦截的方法直接返回
+        String method = mappperHelper.getMethodByMapperStatementId(msId);
+        if( MapperHelper.InterceptorMethod.contains( method)){
+            //进行拼凑订制的SQL语句
+            mappperHelper.addDynamicSql(ms);
+            return invocation.proceed();
+        }
 
 
         return invocation.proceed();
@@ -68,6 +77,6 @@ public class MapperInterceptor implements Interceptor {
 
     @Override
     public void setProperties(Properties properties) {
-
+        mappperHelper.setIDENTITY("IDENTITY");
     }
 }

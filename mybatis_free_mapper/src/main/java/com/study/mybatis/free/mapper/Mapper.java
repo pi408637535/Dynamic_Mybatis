@@ -45,8 +45,8 @@ public interface Mapper<T> {
     @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     List<T> select(T record);
 
-    @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
-    int selectCount(T record);
+  /*  @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
+    int selectCount(T record);*/
 
     @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     T selectByPrimaryKey(Object key);
@@ -54,8 +54,8 @@ public interface Mapper<T> {
     @InsertProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int insert(T record);
 
-    @InsertProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
-    int insertSelective(T record);
+/*    @InsertProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
+    int insertSelective(T record);*/
 
     @DeleteProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int delete(T key);
@@ -66,7 +66,7 @@ public interface Mapper<T> {
     @UpdateProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int updateByPrimaryKey(T record);
 
-    @UpdateProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
-    int updateByPrimaryKeySelective(T record);
+/*    @UpdateProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
+    int updateByPrimaryKeySelective(T record);*/
 
 }

@@ -21,7 +21,12 @@ public class MybatisTest {
         SqlSession session = sqlSessionFactory.openSession();
 //        session.getConfiguration().addMapper(UserMapper.class);
         UserMapper userMapper = session.getMapper(UserMapper.class);
-        User user = userMapper.selectByPrimaryKey(1L);
+
+        User user = new User();
+        user.setName("popo");
+        userMapper.insert(user);
+        session.commit();
+        session.close();
         System.out.println("Current details of the user are "+user.toString());
     }
 }
