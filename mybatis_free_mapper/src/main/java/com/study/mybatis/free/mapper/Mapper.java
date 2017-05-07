@@ -24,7 +24,8 @@
 
 package com.study.mybatis.free.mapper;
 
-import com.study.mybatis.free.free.MapperProvider;
+
+import com.study.mybatis.free.helper.MapperHelper;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.SelectProvider;
@@ -41,31 +42,31 @@ import java.util.List;
  */
 public interface Mapper<T> {
 
-    @SelectProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     List<T> select(T record);
 
-    @SelectProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int selectCount(T record);
 
-    @SelectProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @SelectProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     T selectByPrimaryKey(Object key);
 
-    @InsertProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @InsertProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int insert(T record);
 
-    @InsertProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @InsertProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int insertSelective(T record);
 
-    @DeleteProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @DeleteProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int delete(T key);
 
-    @DeleteProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @DeleteProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int deleteByPrimaryKey(Object key);
 
-    @UpdateProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @UpdateProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int updateByPrimaryKey(T record);
 
-    @UpdateProvider(type = MapperProvider.class, method = "dynamicSQL")
+    @UpdateProvider(type = MapperProvider.class, method = MapperHelper.DYNAMIC_SQL)
     int updateByPrimaryKeySelective(T record);
 
 }

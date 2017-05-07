@@ -17,6 +17,10 @@
 		<package name="com.study.mybatis.free.domain" />
 	</typeAliases>
 
+	
+	<plugins>
+		<plugin interceptor="com.study.mybatis.free.interceptor.MapperInterceptor"></plugin>
+	</plugins>
 	<!--<plugins>
 		<plugin interceptor="com.study.mybatis.free.interceptor.MapperInterceptor">
 			<property name="IDENTITY" value="MYSQL"/>
@@ -35,7 +39,7 @@
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 				<property name="url" value="jdbc:mysql://118.244.212.178:5306/mybatis" />
 				<property name="username" value="root" />
-				<property name="password" value="test@wode2017" />
+				<property name="password" value="test@wode2017social" />
 			</dataSource>
 		</environment>
 	</environments>
